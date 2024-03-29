@@ -1,0 +1,6 @@
+.content{
+    display: none;
+}
+.content.shown{
+    display: block;
+}
