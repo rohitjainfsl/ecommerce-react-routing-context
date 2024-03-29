@@ -144,3 +144,46 @@ nav ul a {
   margin-left: 0;
   margin-right: 0;
 }
+
+@media all and (max-width: 1130px) {
+  .product {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+}
+@media all and (max-width: 992px) {
+  .product {
+    width: 30%;
+  }
+}
+@media all and (max-width: 800px) {
+  .products {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .product {
+    width: 48%;
+    margin: 1rem 0.25rem;
+  }
+  .product img {
+    min-height: auto;
+    height: auto;
+    max-height: 200px;
+  }
+  nav ul {
+    display: none;
+  }
+}
+@media all and (max-width: 500px) {
+  .products{
+    gap: 10px;
+  }
+  .product{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .product img {
+    max-height: 100px;
+  }
+}

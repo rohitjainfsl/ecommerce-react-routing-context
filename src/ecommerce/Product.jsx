@@ -7,7 +7,14 @@ import { ecomContext } from "./Main";
 function Product({ product }) {
   const { cart, setCart } = useContext(ecomContext);
 
-  function removeFromCart(e, product) {}
+  function removeFromCart(e, item) {
+    e.preventDefault();
+    setCart(
+      cart.filter((cartItem) => {
+        return cartItem.id !== item.id;
+      })
+    );
+  }
 
   useEffect(() => {
     if (localStorage.getItem("storedCart")) {

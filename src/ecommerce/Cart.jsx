@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ecomContext } from "./Main";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
@@ -6,8 +6,23 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 function Cart() {
   const { cart, setCart } = useContext(ecomContext);
 
-  function removeFromCart(e, item){
-    e.preventDefault()
+  useEffect(() => {
+    if (localStorage.getItem("storedCart")) {
+      let cartFromLS = JSON.parse(localStorage.getItem("storedCart"));
+      cartFromLS = [...cart];
+      localStorage.setItem("storedCart", JSON.stringify(cartFromLS));
+    } else if (cart.length > 0) {
+      localStorage.setItem("storedCart", JSON.stringify(cart));
+    }
+  }, [cart]);
+
+  function removeFromCart(e, item) {
+    e.preventDefault();
+    setCart(
+      cart.filter((cartItem) => {
+        return cartItem.id !== item.id;
+      })
+    );
   }
 
   return (
