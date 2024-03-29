@@ -2,4 +2,4 @@
 
 ### This uses react-router-dom, nested routing,  context-api & axios
 
-- [Homepage](image.png)
+- ![Homepage](https://github.com/rohitjainfsl/ecommerce-react-routing-context/blob/main/image.png)
