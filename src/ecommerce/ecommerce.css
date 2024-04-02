@@ -110,14 +110,15 @@ nav ul a {
   margin-left: auto;
   margin-right: auto;
 }
-.cart-item {
+.cart-item,
+.cart-total {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #e6e6e6;
 }
-.cart-item .left {
+.cart-item .left, .cart-total .left {
   margin-right: 2rem;
 }
 .cart-item .left img {
@@ -127,10 +128,10 @@ nav ul a {
   border: 2px solid #e6e6e6;
   mix-blend-mode: multiply;
 }
-.cart-item .right {
+.cart-item .right, .cart-total .right {
   width: 50%;
 }
-.cart-item .right .price {
+.cart-item .right .price, .cart-total .right h4 {
   display: inline-flex;
   align-items: center;
 }
@@ -176,10 +177,10 @@ nav ul a {
   }
 }
 @media all and (max-width: 500px) {
-  .products{
+  .products {
     gap: 10px;
   }
-  .product{
+  .product {
     margin-left: 0;
     margin-right: 0;
   }

@@ -15,8 +15,17 @@ function Main() {
       : []
   );
 
+  function removeFromCart(e, item) {
+    e.preventDefault();
+    setCart(
+      cart.filter((cartItem) => {
+        return cartItem.id !== item.id;
+      })
+    );
+  }
+
   return (
-    <ecomContext.Provider value={{ cart, setCart }}>
+    <ecomContext.Provider value={{ cart, setCart, removeFromCart }}>
       <BrowserRouter>
         <Header />
         <Routes>

@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ecomContext } from "./Main";
+import CartItem from "./CartItem";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
 function Cart() {
-  const { cart, setCart } = useContext(ecomContext);
+  const { cart } = useContext(ecomContext);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     if (localStorage.getItem("storedCart")) {
@@ -16,40 +17,28 @@ function Cart() {
     }
   }, [cart]);
 
-  function removeFromCart(e, item) {
-    e.preventDefault();
-    setCart(
-      cart.filter((cartItem) => {
-        return cartItem.id !== item.id;
-      })
-    );
-  }
+  
+
+  useEffect(() => {
+    let total = 0;
+    cart.forEach((cartItem) => (total += cartItem.price));
+    setCartTotal(total);
+  }, [cart]);
 
   return (
     <>
       <div className="display-cart">
         {cart.map((item, index) => {
-          return (
-            <div key={index} className="cart-item">
-              <div className="left">
-                <img src={item.image} alt="" />
-              </div>
-              <div className="right">
-                <h4>{item.title}</h4>
-                <p className="price">
-                  <CurrencyRupeeIcon /> <span>{item.price}</span>
-                </p>
-                <a
-                  href=""
-                  className="cart"
-                  onClick={(e) => removeFromCart(e, item)}
-                >
-                  Remove From <RemoveShoppingCartIcon />
-                </a>
-              </div>
-            </div>
-          );
+          return <CartItem className="cart-item" key={index} item={item} />;
         })}
+        <div className="cart-total">
+          <div className="left">
+            <h3>Total</h3>
+          </div>
+          <div className="right">
+            <h4><CurrencyRupeeIcon /> <span>{cartTotal}</span></h4>
+          </div>
+        </div>
       </div>
     </>
   );
