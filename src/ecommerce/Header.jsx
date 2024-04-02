@@ -11,6 +11,7 @@ function Header() {
       <NavLink className="logo" to="/">
         Ecommerce
       </NavLink>
+      
       <ul>
         <li>
           <NavLink to="">About Us</NavLink>
