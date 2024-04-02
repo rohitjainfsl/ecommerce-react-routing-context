@@ -1,34 +1,35 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useContext } from "react";
 import { ecomContext } from "./Main";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const { cart } = useContext(ecomContext);
 
   return (
     <nav>
-      <a className="logo" href="/">
+      <NavLink className="logo" to="/">
         Ecommerce
-      </a>
+      </NavLink>
       <ul>
         <li>
-          <a href="">About Us</a>
+          <NavLink to="">About Us</NavLink>
         </li>
         <li>
-          <a href="">For Men</a>
+          <NavLink to="/category/men">For Men</NavLink>
         </li>
         <li>
-          <a href="">For Women</a>
+          <NavLink to="/category/women">For Women</NavLink>
         </li>
         <li>
-          <a href="" className="blue btn">
+          <NavLink to="" className="blue btn">
             Login
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="/cart" className="cartIcon">
+          <NavLink to="/cart" className="cartIcon">
             <ShoppingCartIcon /> <span>{cart.length}</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>

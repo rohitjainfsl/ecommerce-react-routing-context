@@ -6,6 +6,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((result) => {
+      console.log(result.data);
       setProducts(result.data);
     });
   }, []);
