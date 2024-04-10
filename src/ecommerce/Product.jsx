@@ -28,6 +28,8 @@ function Product({ product }) {
 
   function addToCart(e, product) {
     e.preventDefault();
+    //add a new key value pair for quantity in the product object
+    product.quantity = 1;
     setCart([...cart, product]);
   }
 

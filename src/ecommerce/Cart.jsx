@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ecomContext } from "./Main";
 import CartItem from "./CartItem";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
 function Cart() {
-  const { cart } = useContext(ecomContext);
-  const [cartTotal, setCartTotal] = useState(0);
+  const { cart, cartTotal, setCartTotal } = useContext(ecomContext);
 
   useEffect(() => {
     if (localStorage.getItem("storedCart")) {
@@ -17,13 +16,11 @@ function Cart() {
     }
   }, [cart]);
 
-  
-
   useEffect(() => {
     let total = 0;
-    cart.forEach((cartItem) => (total += cartItem.price));
+    cart.forEach((cartItem) => (total += cartItem.price * cartItem.quantity));
     setCartTotal(total);
-  }, [cart]);
+  }, [cart, setCartTotal]);
 
   return (
     <>
@@ -36,7 +33,9 @@ function Cart() {
             <h3>Total</h3>
           </div>
           <div className="right">
-            <h4><CurrencyRupeeIcon /> <span>{cartTotal}</span></h4>
+            <h4>
+              <CurrencyRupeeIcon /> <span>{cartTotal}</span>
+            </h4>
           </div>
         </div>
       </div>

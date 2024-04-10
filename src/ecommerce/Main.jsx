@@ -17,6 +17,8 @@ function Main() {
       : []
   );
 
+  const [cartTotal, setCartTotal] = useState(0);
+
   function removeFromCart(e, item) {
     e.preventDefault();
     setCart(
@@ -27,7 +29,7 @@ function Main() {
   }
 
   return (
-    <ecomContext.Provider value={{ cart, setCart, removeFromCart }}>
+    <ecomContext.Provider value={{ cart, setCart, removeFromCart, cartTotal, setCartTotal }}>
       <BrowserRouter>
         <Header />
         <Routes>
