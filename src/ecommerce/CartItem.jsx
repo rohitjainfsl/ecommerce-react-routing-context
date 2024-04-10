@@ -8,14 +8,18 @@ function CartItem({ item }) {
   const { removeFromCart, cart, setCartTotal } = useContext(ecomContext);
   const [quantity, setQuantity] = useState(item.quantity);
 
-  useEffect(() => {
-    let total = 0;
-    cart.forEach((cartItem) => (total += cartItem.price * cartItem.quantity));
-    setCartTotal(total);
-  }, [cart, setCartTotal]);
+  // useEffect(() => {
+  //   item.quantity = quantity;
+  //   let total = 0;
+  //   cart.forEach((cartItem) => (total += cartItem.price * cartItem.quantity));
+  //   setCartTotal(total);
+  // }, [cart, setCartTotal]);
 
   useEffect(() => {
     item.quantity = quantity;
+    let total = 0;
+    cart.forEach((cartItem) => (total += cartItem.price * cartItem.quantity));
+    setCartTotal(total);
   }, [item, quantity]);
 
   return (
